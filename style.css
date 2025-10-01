@@ -1,3 +1,23 @@
+/* 🌫️ Loro Piana 大地灰色系统 */
+:root {
+    /* 主色彩系统 */
+    --earth-dark: #3a3632;      /* 深陶土色 - 标题 */
+    --earth-medium: #6b645c;    /* 中灰色 - 正文 */
+    --earth-light: #a8a095;     /* 浅灰色 - 辅助 */
+    --earth-lighter: #d4cfc7;   /* 极浅灰 - 边框 */
+    --earth-lightest: #f5f3f0;  /* 米白灰 - 背景 */
+
+    /* 功能色 */
+    --earth-accent: #8b8175;    /* 强调色 */
+    --earth-hover: #7a6f63;     /* 悬停色 */
+    --earth-shadow: rgba(58, 54, 50, 0.1);
+
+    /* 响应式断点 */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +26,12 @@
 
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
-    background-color: #ffffff;
-    color: #000000;
-    line-height: 1.6;
+    background-color: var(--earth-lightest);
+    color: var(--earth-dark);
+    line-height: 1.7;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -43,12 +65,12 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 2px;
-    background-color: #000000;
+    background-color: var(--earth-dark);
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: #666666;
+    color: var(--earth-medium);
     font-weight: 300;
     letter-spacing: 0.05em;
 }
@@ -70,7 +92,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #000000;
+    color: var(--earth-dark);
     font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -85,14 +107,14 @@ body {
     top: 0;
     left: 0;
     color: transparent;
-    -webkit-text-stroke: 1px #000000;
+    -webkit-text-stroke: 1px var(--earth-dark);
     transition: all 0.3s ease;
     z-index: -1;
 }
 
 .nav-link:hover {
-    color: #ffffff;
-    background-color: #000000;
+    color: var(--earth-lightest);
+    background-color: var(--earth-dark);
     padding: 8px 16px;
     margin: -8px -16px;
 }
@@ -113,7 +135,7 @@ body {
 .intro-text {
     font-size: 1.3rem;
     line-height: 1.8;
-    color: #333333;
+    color: var(--earth-medium);
     font-weight: 300;
     max-width: 600px;
     margin: 0 auto;
@@ -131,7 +153,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #000000;
+    background-color: var(--earth-dark);
     opacity: 0.3;
 }
 
@@ -152,12 +174,12 @@ body {
 .number {
     font-size: 2.5rem;
     font-weight: 500;
-    color: #000000;
+    color: var(--earth-dark);
 }
 
 .label {
     font-size: 0.9rem;
-    color: #666666;
+    color: var(--earth-light);
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
@@ -166,53 +188,208 @@ body {
     text-align: center;
     margin-top: 80px;
     padding-top: 40px;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid var(--earth-lighter);
 }
 
 .copyright {
     font-size: 0.9rem;
-    color: #999999;
+    color: var(--earth-light);
     font-weight: 300;
 }
 
+/* 📱 移动端响应式优化 */
 @media (max-width: 768px) {
     .container {
-        padding: 40px 20px;
+        padding: 30px 20px;
+        min-height: calc(100vh - 60px);
+        max-width: 100%;
     }
-    
+
+    .header {
+        margin-bottom: 50px;
+    }
+
     .name {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 15px;
     }
-    
+
+    .name::after {
+        width: 80px;
+        height: 1px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .navigation {
+        margin-bottom: 50px;
+    }
+
     .nav-list {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
+        align-items: center;
+        width: 100%;
     }
-    
+
+    .nav-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .nav-link {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        padding: 12px 24px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        text-align: center;
+        min-width: 200px;
     }
-    
+
+    .nav-link:hover {
+        padding: 12px 24px;
+        margin: 0;
+        background-color: var(--earth-dark);
+        color: var(--earth-lightest);
+    }
+
+    .intro {
+        margin-bottom: 40px;
+    }
+
     .intro-text {
         font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 90%;
     }
-    
+
     .achievements {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .stat {
+        gap: 8px;
+    }
+
+    .number {
+        font-size: 2rem;
+    }
+
+    .label {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+    }
+
+    .footer {
+        margin-top: 50px;
+        padding-top: 30px;
+    }
+
+    .copyright {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 }
 
+/* 📱 微信H5和小屏手机优化 */
 @media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+        min-height: calc(100vh - 50px);
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
     .name {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 12px;
     }
-    
+
+    .name::after {
+        width: 60px;
+        height: 1px;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .navigation {
+        margin-bottom: 40px;
+    }
+
+    .nav-list {
+        gap: 20px;
+    }
+
     .nav-link {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        padding: 8px 16px;
     }
-    
+
+    .intro {
+        margin-bottom: 30px;
+    }
+
     .intro-text {
         font-size: 1rem;
+        line-height: 1.6;
+        max-width: 95%;
+    }
+
+    .achievements {
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .number {
+        font-size: 1.8rem;
+    }
+
+    .label {
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        margin-top: 40px;
+        padding-top: 25px;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+/* 🌐 微信内置浏览器优化 */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        min-height: -webkit-fill-available;
+    }
+
+    .nav-link {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* 📲 高清屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .name::after {
+        height: 0.5px;
+        transform: translateX(-50%) scaleY(0.5);
+    }
+
+    .footer {
+        border-top: 0.5px solid var(--earth-lighter);
     }
 }
